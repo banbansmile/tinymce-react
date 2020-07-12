@@ -2,7 +2,17 @@
 
 
 
-Person WebSite:  www.banbansmile.com
+Person WebSite  www.banbansmile.com
+
+
+
+This is a TinyEditor Example used by React
+You can learn how TinyEditor are configed in React 
+include：
+
+1. Full config in React with TinyEditor
+2. Upload Image Example
+3. config The `babel-plugin-prismjs` used in the `customize-cra ` 
 
 
 
@@ -21,6 +31,8 @@ Install the project dependency
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+Open http://localhost:3000/#/code to view the code  are rendered
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
