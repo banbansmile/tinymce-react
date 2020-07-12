@@ -3,7 +3,6 @@ import Prism from 'prismjs';
 
 export default class CodeExample extends React.Component {
 
-
     componentWillMount() {
 
     }
@@ -23,9 +22,7 @@ export default class CodeExample extends React.Component {
                 </code>
             </pre>
         </div>
-
         )
-
     }
 }
 

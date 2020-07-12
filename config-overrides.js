@@ -2,17 +2,11 @@ const path = require('path')
 
 const {
     override,
-    fixBabelImports,
-    addLessLoader,
     addWebpackAlias,
-    addWebpackModuleRule,
-    addWebpackPlugin,
-    addBabelPlugins,
     useBabelRc
 } = require('customize-cra')
 
 module.exports = override(
-
     addWebpackAlias({
         '@': path.resolve(__dirname, 'src'),
         'components': path.resolve(__dirname, 'src/components'),
@@ -21,7 +15,5 @@ module.exports = override(
         'img': path.resolve(__dirname, 'src/img')
     }),
     useBabelRc(),
-    // addWebpackPlugin()
-
 )
 
