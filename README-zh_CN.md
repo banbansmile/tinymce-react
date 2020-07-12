@@ -2,7 +2,7 @@
 
 
 
-个人网站  <www.banbansmile.com>
+个人网站  www.banbansmile.com
 
 
 
