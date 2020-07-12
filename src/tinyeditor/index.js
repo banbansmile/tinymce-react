@@ -1,8 +1,24 @@
 import React from 'react'
 import { Editor } from '@tinymce/tinymce-react';
+import { uploadFile } from '@/api'
 
 export default class TinyEditor extends React.Component {
 
+    imagesUploadHandler = async (blobInfo, success, failure, progress) => {
+        var data = new FormData();
+        data.append('files', blobInfo.blob(), blobInfo.filename());
+        let res = await uploadFile(data);
+        if (res) {
+            let { errno } = res;
+            if (errno === 0) {
+                success(res.data[0]);//return Json Format is ["imageUrl","imageUrl1"]
+            } else {
+                failure("图片上传失败")
+            }
+        } else {
+            failure("图片上传失败")
+        }
+    }
 
     handleEditorChange = (e) => {
         console.log(e);
@@ -11,20 +27,17 @@ export default class TinyEditor extends React.Component {
     render() {
         return (
             <Editor
-                initialValue="<p>This is the initial content of the editor</p>"
+                initialValue=""
                 apiKey="hq72bjfug6s56a5qxa2oxpbqsxc58nv4v7nfruyd5ndpgu72"
                 init={{
                     height: 500,
-                    // menubar: false,
                     plugins: [
                         'advlist autolink lists link image charmap print preview anchor',
                         'searchreplace visualblocks code fullscreen',
                         'insertdatetime media table paste code help wordcount imagetools codesample'
                     ],
                     toolbar:
-                        'undo redo | formatselect | bold italic backcolor | \
-                  alignleft aligncenter alignright alignjustify | \
-                  bullist numlist outdent indent | removeformat |image|codesample|code|preview|fullscreen | help',
+                        'undo redo | formatselect | bold italic backcolor |  alignleft aligncenter alignright alignjustify |bullist numlist outdent indent | removeformat |image|codesample|code|preview|fullscreen | help',
                     menu: {
                         file: { title: '文件', items: 'newdocument restoredraft | preview | print ' },
                         edit: { title: 'Edit', items: 'undo redo | cut copy paste | selectall | searchreplace' },
@@ -46,9 +59,12 @@ export default class TinyEditor extends React.Component {
                         { text: 'Java', value: 'java' },
                         { text: 'C', value: 'c' },
                         { text: 'C#', value: 'csharp' },
-                        { text: 'C++', value: 'cpp' }
+                        { text: 'C++', value: 'cpp' },
+                        { text: 'Scala', value: 'scala' }
                     ],
-                    content_css: '//www.tiny.cloud/css/codepen.min.css'
+                    language: "zh_CN",
+                    image_uploadtab: true,
+                    images_upload_handler: this.imagesUploadHandler
                 }}
                 onEditorChange={this.handleEditorChange}
             />
