@@ -1,7 +1,10 @@
 ### [English](README.md)| 简体中文
 
 
-这个项目使用React来创建的 [Create React App](https://github.com/facebook/create-react-app).
+
+个人网站  <www.banbansmile.com>
+
+
 
 ## 可用的脚本
 
